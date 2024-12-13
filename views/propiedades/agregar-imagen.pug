@@ -1,20 +1,23 @@
-extends ../layout/admin
+extends ../layout/admin  
 
-block styles
-    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.css")
-    meta(name="csrf-token" content= csrfToken)
-block contenido
-    .py-10
-        h1.text-4xl.my-10.font-extrabold.text-center Bienes 
-            span.font-normal Raíces  
-        h2.text-center.text-2xl.font-extrabold= pagina
+block styles  
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.css")  
+    meta(name="csrf-token" content= csrfToken)  
 
-        div(class="bg-white shadow py-8 px-4 rounded mx-auto max-w-4xl my-10 md:px-10")
-            form(id="imagen" class="dropzone border-dashed border-2 w-full min:h-96 h-auto rounded flex-col justify-center items-center" method="POST" action=`/propiedades/agregar-imagen/${propiedad.id}`)
-                input(type="hidden" name="_csrf" value= csrfToken)
-                
+block contenido  
+    .py-10  
+        h1.text-4xl.my-10.font-extrabold.text-center.text-black Bienes   
+            span.font-normal.text-green-600 Raíces  
+        h2.text-center.text-2xl.font-extrabold.text-green-600= pagina  
 
-            button(id="publicar" class="mt-5 w-full py-3 bg-indigo-600 hover:bg-indigo-700 rounded text-white font-bold uppercase cursor-pointer" type="button") Publicar Propiedad   
+        div(class="bg-formBackground shadow py-8 px-4 rounded mx-auto max-w-4xl my-10 md:px-10")  
+            form(id="imagen" class="dropzone border-dashed border-2 border-green-400 w-full min:h-96 h-auto rounded flex-col justify-center items-center" method="POST" action=`/propiedades/agregar-imagen/${propiedad.id}`)  
+                input(type="hidden" name="_csrf" value= csrfToken)  
 
-block scripts 
+                // Mensaje en área de Dropzone  
+                p.text-green-600.text-center.mb-5 Drop your images here or click to upload.  
+
+            button(id="publicar" class="mt-5 w-full py-3 bg-green-600 hover:bg-green-700 rounded text-white font-bold uppercase cursor-pointer" type="button") Publicar Propiedad   
+
+block scripts   
     script(src="/js/agregarImagen.js")
