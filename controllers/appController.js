@@ -24,7 +24,6 @@ const inicio = async (req, res) => {
                 ['createdAt', 'DESC']
             ]
         }),
-        //-------------------------------------------------------------
         Propiedad.findAll({
             limit: 3,
             where: {
@@ -111,7 +110,6 @@ const categoria = async (req, res) => {
         return res.redirect('/404');
     }
 
-//------------------------------------------------------------
     const propiedadesRenta = await Propiedad.findAll({
         where: {
             categoriaID: id,
