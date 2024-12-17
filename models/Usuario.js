@@ -8,6 +8,10 @@ const Usuario = db.define('usuarios', {
         type: DataTypes.STRING,
         allowNull: false
     },
+    alias: {
+        type: DataTypes.STRING,
+        allowNull: true
+    },
     email: {
         type: DataTypes.STRING,
         allowNull: false
@@ -19,7 +23,11 @@ const Usuario = db.define('usuarios', {
     token: {
         type: DataTypes.STRING
     },
-    confirmado: DataTypes.BOOLEAN
+    confirmado: DataTypes.BOOLEAN,
+    fechaDeNacimiento: {
+        type: DataTypes.DATEONLY,
+        allowNull : true
+    }
 }, {
     hooks: {
         beforeCreate: async function (usuario) {

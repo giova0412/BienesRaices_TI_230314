@@ -93,6 +93,23 @@ const registrar = async (req, res) => {
     await check('password').isLength({ min: 6 }).withMessage('El password debe ser de almenos 6 caracteres').run(req)
     await check('repetir_password').equals(req.body.password).withMessage('Los password no coinciden').run(req)
 
+    await check('fecha_nacimiento')
+        .notEmpty().withMessage('La fecha de nacimiento es obligatoria')
+        .custom((value) => {
+            const age = moment().diff(moment(value, 'YYYY-MM-DD'), 'years');
+            if (age < 18) {
+                throw new Error('Debes ser mayor de 18 años para registrarte');
+            }
+            return true;
+        })
+        .run(req);
+
+    // Validación del alias
+    await check('alias')
+        .notEmpty().withMessage('El alias es un campo obligatorio')
+        .isLength({ min: 3 }).withMessage('El alias debe tener al menos 3 caracteres')
+        .run(req);
+
     let resultado = validationResult(req)
 
 
@@ -104,14 +121,16 @@ const registrar = async (req, res) => {
             errores: resultado.array(),
             usuario: {
                 nombre: req.body.nombre,
-                email: req.body.email
+                email: req.body.email,
+                fecha_nacimiento: req.body.fecha_nacimiento,
+                alias: req.body.alias
             }
         })
     }
 
     //Extraer los datos
 
-    const { nombre, email, password } = req.body
+    const { nombre, email, password, fecha_nacimiento, alias } = req.body
 
     //verificar que el usuario no este duplicado
     const existeUsuario = await Usuario.findOne({ where: { email } })
@@ -122,7 +141,9 @@ const registrar = async (req, res) => {
             errores: [{ msg: 'El usuario ya esta Registrado' }],
             usuario: {
                 nombre: req.body.nombre,
-                email: req.body.email
+                email: req.body.email,
+                fecha_nacimiento: req.body.fecha_nacimiento,
+                alias: req.body.alias
             }
         })
     }
@@ -132,6 +153,8 @@ const registrar = async (req, res) => {
         nombre,
         email,
         password,
+        fecha_nacimiento,
+        alias,
         token: generateID()
     })
 
