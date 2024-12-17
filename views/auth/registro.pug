@@ -16,24 +16,24 @@ block contenido
                 form.space-y-5(method="POST" action="/auth/registro" novalidate)
                     input(type="hidden" name="_csrf" value= csrfToken) 
                     div 
-                        label.block.text-sm.uppercase.text-secondaryText.mb-3.font-bold(for="nombre") Tu Nombre
-                        input#nombre.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="text" placeholder="Escribe tu nombre" value=(usuario && usuario.nombre ? usuario.nombre : ""))
+                        label.block.text-sm.uppercase.text-secondaryText.mb-3.font-bold Tu Nombre
+                        input#nombre.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="text" name="nombre" placeholder="Escribe tu nombre" value=(usuario && usuario.nombre ? usuario.nombre : ""))
                     div 
-                        label.block.text-sm.uppercase.text-secondaryText.mb-3.font-bold(for="alias") Alias
-                        input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400( type="text" placeholder="Mani" value=(usuario && usuario.alias ? usuario.alias : "")) 
+                        label.block.text-sm.uppercase.text-secondaryText.mb-3.font-bold Alias
+                        input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400( type="text" name="alias" placeholder="Mani" value=(usuario && usuario.alias ? usuario.alias : "")) 
                     div 
-                        label.block.text-sm.uppercase.text-secondaryText.mb-3.font-bold(for="fecha_nacimiento") Fecha de nacimeitno
-                        input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="date" (usuario && usuario.fecha_nacimiento ? usuario.fecha_nacimiento : "")) 
+                        label.block.text-sm.uppercase.text-secondaryText.mb-3.font-bold Fecha de nacimeitno
+                        input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="date" name="fecha_nacimiento" value= (usuario && usuario.fecha_nacimiento ? usuario.fecha_nacimiento : "")) 
                     div 
-                        label.block.text-sm.uppercase.text-secondaryText.mb-3.font-bold(for="email") Email de Registro
-                        input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="email" placeholder="Escribe tu email" value=value=(usuario && usuario.email ? usuario.email : "")) 
+                        label.block.text-sm.uppercase.text-secondaryText.mb-3.font-bold Email de Registro
+                        input#email.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="email" name="email" placeholder="Escribe tu email" value=value=(usuario && usuario.email ? usuario.email : "")) 
                     div 
 
-                        label.block.text-sm.uppercase.text-secondaryText.mb-3.font-bold(for="password") Password
-                        input#password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="password" placeholder="Escribe tu password" type="password" name="password" )        
+                        label.block.text-sm.uppercase.text-secondaryText.mb-3.font-bold Password
+                        input#password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400(type="password" placeholder="Minimo de 8 caracteres" name="password")
                     div 
-                        label.block.text-sm.uppercase.text-secondaryText.mb-3.font-bold(for="repetir_password") Repetir password
-                        input#repetir_password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400( type="password" placeholder="Repite tu password" type="password" name="repetir_password")         
+                        label.block.text-sm.uppercase.text-secondaryText.mb-3.font-bold Repetir password
+                        input#repetir_password.w-full.px-3.py-2.border.border-gray-300.rounded-md.placeholder-gray-400( type="password" placeholder="Repite tu password" name="repetir_password")         
                     
                     div.flex.items-center.justify-between 
                         a.text-secondaryText.text-xs(href="/auth/login") ¿Ya tienes cuenta? Inicia Sesión

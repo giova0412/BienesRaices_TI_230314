@@ -97,7 +97,7 @@ const emailRegistro = async (datos) => {
                 </div>  
                 <div class="content">  
                     <p>Tu cuenta ya está lista. Solo debes confirmarla haciendo clic en el siguiente enlace:</p>  
-                    <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3001}/auth/confirmar/${token}" class="btn">  
+                    <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3000}/auth/confirmar/${token}" class="btn">  
                         Confirmar cuenta  
                     </a>  
                     <p>Si tú no creaste esta cuenta, puedes ignorar este email.</p>  
@@ -206,7 +206,7 @@ const emailOlvidePassword = async (datos) => {
                 </div>  
                 <div class="content">  
                     <p>Has solicitado restablecer tu contraseña en Bienes Raíces. Para hacerlo, sigue el siguiente enlace:</p>  
-                    <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3001}/auth/olvide-password/${token}" class="btn">  
+                    <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3000}/auth/olvide-password/${token}" class="btn">  
                         Restablecer contraseña  
                     </a>  
                     <p>Si tú no solicitaste el cambio de contraseña, puedes ignorar este email.</p>  
